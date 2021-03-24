@@ -61,3 +61,31 @@
     }
 	
 	<button onClick={(event)=>incrementHanler(event,counter)}>Increment</button>
+	
+8. JSX - 
+	 return React.createElement('div',{style:{color:'red'}},React.createElement('h1',null,'This is Working'))
+	 
+9. Functional based Components - 
+
+10. Class based Components - 
+
+11. Higher Order Componnets - 
+
+12. Component LifeCycle
+
+	 componentDidMount(){
+        console.log('Componnet Mounted')
+        this.setState({
+            'counter':3
+        })
+       
+    }
+
+    shouldComponentUpdate(){
+        if (this.state.counter >= 9) {
+            return false
+        }
+        else{
+            return true
+        }
+    }
