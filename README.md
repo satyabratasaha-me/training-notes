@@ -73,19 +73,69 @@
 
 12. Component LifeCycle
 
-	 componentDidMount(){
-        console.log('Componnet Mounted')
+	componentDidMount(){
         this.setState({
-            'counter':3
+            counter: 3
         })
-       
     }
-
-    shouldComponentUpdate(){
-        if (this.state.counter >= 9) {
+	
+	componentDidUpdate(){
+        console.log("Component Unmounted")
+    }
+	
+	 shouldComponentUpdate(){
+        if (this.state.counter >= 15){
             return false
         }
-        else{
+        else {
             return true
         }
     }
+	
+13. LazyLoading
+
+	const LazyTableComponent = lazy(() => import('../components/Table'))
+	
+13. Routing
+
+import React from 'react'
+
+	import {BrowserRouter as Router } from 'react-router-dom'
+	import Route from 'react-router-dom/Route'
+
+	const User = (props) => {
+		return(
+		<div>Hi! {props.match.params.username}</div>
+		)
+	}
+
+	export default User
+	
+	<Router>
+    <div className="App">
+      <Route path='/' exact>
+        <div>This is Home Page</div>
+      </Route>
+
+      <Route path='/about' exact>
+        <div>This is About Page</div>
+      </Route>
+
+      <Route path='/user/:username' exact component={User}></Route>
+
+      <ul>
+        <li>
+          <Link to='/'>Home Page</Link>
+        </li>
+        <li>
+          <Link to='/about'>About Page</Link>
+        </li>
+        <li>
+          <Link to='/user/:Peter'>User</Link>
+        </li>
+      </ul>
+      
+    </div>
+    </Router>
+	
+	
